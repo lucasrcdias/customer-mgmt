@@ -1,5 +1,5 @@
 const express    = require('express')
-const middleware = require('./middleware')
+const middleware = require('./middlewares')
 const api        = require('./api')
 
 const app = express()

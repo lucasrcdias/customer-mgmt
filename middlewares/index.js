@@ -1,4 +1,4 @@
-const defaultMiddleware = require('./default-middleware')
+const defaultMiddleware = require('./default')
 
 const middlewares = (app) => {
   defaultMiddleware(app)
