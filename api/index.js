@@ -1,17 +1,13 @@
-const { Router }  = require('express')
-const application = require('../package.json')
+const { Router }     = require('express')
+const authMiddleware = require('./../middlewares/authentication')
 
 const api = (app) => {
   let api = Router()
 
-  api.get('/', (req, res, next) => {
-    res.json({
-      name: application.name,
-      description: application.description,
-      version: application.version
-    })
+  api.use(authMiddleware)
 
-    next()
+  api.get('/', (req, res) => {
+    res.send('Ok')
   })
 
   return api
