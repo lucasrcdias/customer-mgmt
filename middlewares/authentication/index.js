@@ -1,7 +1,9 @@
 const jwt    = require('jsonwebtoken')
 const config = require('config')
 
-const authenticationMiddleware = (req, res, next) => {
+const authMiddleware = (req, res, next) => {
+  if (req.path === '/auth') { return next() }
+
   const token = req.header('Authorization')
 
   console.log('[AUTHENTICATION] Authenticating...')
@@ -10,15 +12,13 @@ const authenticationMiddleware = (req, res, next) => {
     if (error) {
       console.log('[AUTHENTICATION] Authentication failure :(')
 
-      res.send({
+      return res.send({
         user: {
           errors: {
             token: 'O token informado não é válido'
           }
         }
       })
-
-      return
     }
 
     console.log('[AUTHENTICATION] Authenticated :)')
@@ -26,4 +26,4 @@ const authenticationMiddleware = (req, res, next) => {
   })
 }
 
-module.exports = authenticationMiddleware
+module.exports = authMiddleware
