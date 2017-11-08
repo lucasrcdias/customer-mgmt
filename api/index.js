@@ -7,7 +7,9 @@ const api = (app) => {
   api.use(authMiddleware)
 
   api.get('/', (req, res) => {
-    res.send('Ok')
+    res.send({
+      message: 'Autenticado'
+    })
   })
 
   return api
