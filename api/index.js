@@ -1,5 +1,6 @@
 const { Router }     = require('express')
 const authRoutes     = require('./authentication')
+const usersRoutes    = require('./users')
 const authMiddleware = require('./../middlewares/authentication')
 
 const api = (app) => {
@@ -8,10 +9,11 @@ const api = (app) => {
   api.use(authMiddleware)
 
   api.get('/', (req, res) => {
-    res.send({ message: 'Autenticado' })
+    res.status(200).send({ message: 'Autenticado' })
   })
 
   authRoutes(api)
+  usersRoutes(api)
 
   return api
 }
