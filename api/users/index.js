@@ -1,4 +1,4 @@
-const User = require('./../../users/model')
+const User = require('./../../models/user')
 
 const usersRoutes = (api) => {
   api.post('/users', (req, res) => {
