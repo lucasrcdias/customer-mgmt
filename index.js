@@ -11,8 +11,3 @@ app.use('/api', api(app))
 app.listen(3000, () => {
   console.info('Customer Management API on port 3000')
 })
-
-// Add authentication
-// Add mocked API's
-// Add models (ORM)
-// Add tests
