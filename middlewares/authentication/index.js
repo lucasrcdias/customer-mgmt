@@ -1,8 +1,25 @@
 const jwt    = require('jsonwebtoken')
 const config = require('config')
 
+const isBypassed = (req) => {
+  const bypassed = [
+    {
+      'path':   '/auth',
+      'method': 'POST'
+    },
+    {
+      'path':   '/users',
+      'method': 'POST'
+    }
+  ]
+
+  return bypassed.filter((item) => {
+    return req.path === item.path && req.method === item.method
+  }).length
+}
+
 const authMiddleware = (req, res, next) => {
-  if (req.path === '/auth') { return next() }
+  if (isBypassed(req)) { return next() }
 
   const token = req.header('Authorization')
 
@@ -12,7 +29,7 @@ const authMiddleware = (req, res, next) => {
     if (error) {
       console.log('[AUTHENTICATION] Authentication failure :(')
 
-      return res.send({
+      return res.status(401).send({
         user: {
           errors: {
             token: 'O token informado não é válido'
