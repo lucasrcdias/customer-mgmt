@@ -1,30 +1,14 @@
-const jwt    = require('jsonwebtoken')
-const config = require('config')
+const Authenticate = require('./../../services/auth')
 
 const authRoutes = (api) => {
   api.post('/auth', (req, res) => {
-    const user = {
-      id: 1,
-      name: 'Lucas Ramos',
-      email: 'lucasrcdias@gmail.com',
-      password: 'supersecret'
-    }
-
-    jwt.sign(user, config.get('secret'), { expiresIn: '1d' }, (error, token) => {
-      if (error) {
-        res.send({
-          user: {
-            errors: {
-              token: 'Não foi possível gerar o token de autenticação'
-            }
-          }
-        })
-      }
-
-      res.send({
-        token: token
+    Authenticate(req.body.user)
+      .then((user) => {
+        res.status(200).send(user)
       })
-    })
+      .catch((error) => {
+        res.status(400).send(error)
+      })
   })
 }
 
