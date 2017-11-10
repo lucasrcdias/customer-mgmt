@@ -2,6 +2,11 @@ const Sequelize = require('sequelize')
 const bcrypt    = require('bcrypt')
 const sequelize = require('./../db')
 
+const passwordHash = (user, options) => {
+  return bcrypt.hash(user.password, 10)
+    .then((hash) => { user.password = hash })
+}
+
 const userAttributes = {
   'email': {
     'type': Sequelize.TEXT,
@@ -34,19 +39,13 @@ const userAttributes = {
 
 const modelAttributes = {
   'timestamps': true,
-  'underscored': true
-}
-
-const passwordHash = (user, options) => {
-  return bcrypt.hash(user.password, 10)
-    .then((hash) => { user.password = hash })
+  'underscored': true,
+  'hooks': {
+    'beforeCreate': passwordHash,
+    'beforeUpdate': passwordHash
+  }
 }
 
 const User = sequelize.define('user', userAttributes, modelAttributes)
-
-User.beforeCreate(passwordHash)
-User.beforeUpdate(passwordHash)
-
-User.sync()
 
 module.exports = User
