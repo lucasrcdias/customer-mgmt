@@ -6,6 +6,7 @@
   "author": "Lucas Ramos",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "compression": "^1.7.1",
     "config": "^1.28.0",
