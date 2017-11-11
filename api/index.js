@@ -9,7 +9,7 @@ const api = (app) => {
   api.use(authMiddleware)
 
   api.get('/', (req, res) => {
-    res.status(200).send({ message: 'Autenticado' })
+    res.status(200).send({ 'user': req.currentUser })
   })
 
   authRoutes(api)
