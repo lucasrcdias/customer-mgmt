@@ -40,7 +40,7 @@ const destroy = (customer) => {
           return reject({ 'errors': 'Cliente não encontrado' })
         }
 
-        record.destroy(customer)
+        record.destroy()
           .then(() => {
             resolve(true)
           })
