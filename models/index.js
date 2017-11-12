@@ -1,8 +1,16 @@
 const User     = require('./user')
 const Customer = require('./customer')
+const Phone    = require('./phone')
 
-User.hasMany(Customer)
+// User -> Customer association
+User    .hasMany(Customer)
 Customer.belongsTo(User)
 
-User.sync()
+// Customer -> Phone association
+Customer.hasMany(Phone)
+Phone   .belongsTo(Customer)
+
+// Database sync
+User    .sync()
 Customer.sync()
+Phone   .sync()
