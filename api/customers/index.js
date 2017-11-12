@@ -2,6 +2,7 @@ const Customer           = require('./../../models/customer')
 const CustomerService    = require('./../../services/customer')
 const CustomerMiddleware = require('./../../middlewares/customer')
 const PhoneRoutes        = require('./../phones')
+const AddressRoutes      = require('./../addresses')
 
 const customersRoutes = (api) => {
   api.get('/customers', (req, res) => {
@@ -52,6 +53,7 @@ const customersRoutes = (api) => {
 
   api.use('/customers/:id', CustomerMiddleware)
   PhoneRoutes(api)
+  AddressRoutes(api)
 }
 
 module.exports = customersRoutes
