@@ -4,7 +4,7 @@ const usersRoutes    = require('./users')
 const customerRoutes = require('./customers')
 const authMiddleware = require('./../middlewares/authentication')
 
-const api = (app) => {
+const api = () => {
   let api = Router()
 
   api.use(authMiddleware)

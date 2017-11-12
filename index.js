@@ -7,7 +7,7 @@ const app = express()
 
 middleware(app)
 
-app.use('/api', api(app))
+app.use('/api', api())
 
 app.listen(3000, () => {
   console.info('Customer Management API on port 3000')
