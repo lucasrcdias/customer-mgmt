@@ -2,6 +2,7 @@ const { Router }     = require('express')
 const authRoutes     = require('./authentication')
 const usersRoutes    = require('./users')
 const customerRoutes = require('./customers')
+const searchRoutes   = require('./search')
 const authMiddleware = require('./../middlewares/authentication')
 
 const api = () => {
@@ -16,6 +17,7 @@ const api = () => {
   authRoutes(api)
   usersRoutes(api)
   customerRoutes(api)
+  searchRoutes(api)
 
   return api
 }
