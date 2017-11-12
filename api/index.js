@@ -1,6 +1,7 @@
 const { Router }     = require('express')
 const authRoutes     = require('./authentication')
 const usersRoutes    = require('./users')
+const customerRoutes = require('./customers')
 const authMiddleware = require('./../middlewares/authentication')
 
 const api = (app) => {
@@ -9,11 +10,12 @@ const api = (app) => {
   api.use(authMiddleware)
 
   api.get('/', (req, res) => {
-    res.status(200).send({ 'user': req.currentUser })
+    res.status(200).send({ 'status': 'OK' })
   })
 
   authRoutes(api)
   usersRoutes(api)
+  customerRoutes(api)
 
   return api
 }
