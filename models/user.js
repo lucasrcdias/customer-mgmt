@@ -7,7 +7,7 @@ const passwordHash = (user, options) => {
     .then((hash) => { user.password = hash })
 }
 
-const userAttributes = {
+const UserAttributes = {
   'email': {
     'type': Sequelize.TEXT,
     'allowNull': false,
@@ -37,7 +37,7 @@ const userAttributes = {
   }
 }
 
-const modelAttributes = {
+const UserOptions = {
   'timestamps': true,
   'underscored': true,
   'hooks': {
@@ -46,6 +46,6 @@ const modelAttributes = {
   }
 }
 
-const User = sequelize.define('user', userAttributes, modelAttributes)
+const User = sequelize.define('user', UserAttributes, UserOptions)
 
 module.exports = User
