@@ -10,7 +10,7 @@ const fromToken = (decoded) => {
           return reject({ 'errors': 'Usuário não encontrado' })
         }
 
-        return resolve(_.omit(user.get({ 'plain': true }), ['password']))
+        return resolve(user)
       })
   })
 }
