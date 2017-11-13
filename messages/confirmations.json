@@ -1,0 +1,13 @@
+{
+  "confirmations": {
+    "address": {
+      "destroy": "Endereço removido"
+    },
+    "customer": {
+      "destroy": "Cliente removido"
+    },
+    "phone": {
+      "destroy": "Telefone removido"
+    }
+  }
+}
