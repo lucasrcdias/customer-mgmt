@@ -1,6 +1,7 @@
 const jwt         = require('jsonwebtoken')
 const config      = require('config')
 const CurrentUser = require('./../../services/current-user')
+const Messages    = require('./../../messages')
 
 const isBypassed = (req) => {
   const bypassed = [
@@ -16,7 +17,7 @@ const isBypassed = (req) => {
 
   return bypassed.filter((item) => {
     return req.path === item.path && req.method === item.method
-  }).length
+  }).lengthw
 }
 
 const authMiddleware = (req, res, next) => {
@@ -26,9 +27,9 @@ const authMiddleware = (req, res, next) => {
 
   jwt.verify(token, config.get('secret'), (error, decoded) => {
     if (error || !decoded) {
-      console.error('[AUTHENTICATION] Authentication failed')
+      console.error('[AUTHENTICATION] Invalid token')
 
-      return res.status(401).send({ 'errors': { 'token': 'O token informado não é válido' } })
+      return res.status(401).send({ 'errors': { 'token': Messages.errors.token } })
     }
 
     console.log('[AUTHENTICATION] Authentication success')
@@ -38,7 +39,9 @@ const authMiddleware = (req, res, next) => {
         req.currentUser = user
         next()
       })
-      .catch((error) => { return res.status(401).send(error) })
+      .catch((error) => {
+        res.status(401).send(error)
+      })
   })
 }
 

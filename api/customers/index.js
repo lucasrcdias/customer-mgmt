@@ -3,6 +3,7 @@ const CustomerService    = require('./../../services/customer')
 const CustomerMiddleware = require('./../../middlewares/customer')
 const PhoneRoutes        = require('./../phones')
 const AddressRoutes      = require('./../addresses')
+const Messages           = require('./../../messages')
 
 const customersRoutes = (api) => {
   api.get('/customers', (req, res) => {
@@ -44,7 +45,7 @@ const customersRoutes = (api) => {
 
     CustomerService.destroy(customer)
       .then((customer) => {
-        res.status(200).send({ 'message': 'Cliente removido com sucesso' })
+        res.status(200).send({ 'message': Messages.confirmations.customer.destroy })
       })
       .catch((errors) => {
         res.status(400).send(errors)

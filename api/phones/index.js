@@ -1,5 +1,6 @@
 const Phone        = require('./../../models/phone')
 const PhoneService = require('./../../services/phone')
+const Messages     = require('./../../messages')
 
 const PhoneRoutes = (api) => {
   api.get('/customers/:id/phones', (req, res) => {
@@ -41,7 +42,7 @@ const PhoneRoutes = (api) => {
 
     PhoneService.destroy(phone)
       .then((phone) => {
-        res.status(200).send({ 'message': 'Telefone removido com sucesso' })
+        res.status(200).send({ 'message': Messages.confirmations.phone.destroy })
       })
       .catch((errors) => {
         res.status(400).send(errors)

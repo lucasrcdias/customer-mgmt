@@ -1,5 +1,6 @@
 const Address        = require('./../../models/address')
 const AddressService = require('./../../services/address')
+const Messages       = require('./../../messages')
 
 const AddressRoutes = (api) => {
   api.get('/customers/:id/addresses', (req, res) => {
@@ -41,7 +42,7 @@ const AddressRoutes = (api) => {
 
     AddressService.destroy(address)
       .then((address) => {
-        res.status(200).send({ 'message': 'Endereço removido com sucesso' })
+        res.status(200).send({ 'message': Messages.confirmations.address.destroy })
       })
       .catch((errors) => {
         res.status(400).send(errors)

@@ -1,13 +1,16 @@
-const jwt  = require('jsonwebtoken')
-const _    = require('lodash');
-const User = require('./../models/user')
+const jwt      = require('jsonwebtoken')
+const _        = require('lodash');
+const User     = require('./../models/user')
+const Messages = require('./../messages')
 
 const fromToken = (decoded) => {
   return new Promise((resolve, reject) => {
     User.findById(decoded.id)
       .then((user) => {
         if (!user) {
-          return reject({ 'errors': 'Usuário não encontrado' })
+          return reject({ 'errors': {
+            'user': { 'not_found': Messages.errors.user.not_found }
+          } })
         }
 
         return resolve(user)
