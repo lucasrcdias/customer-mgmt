@@ -269,7 +269,7 @@ Example: `localhost:3000/api/customers/1/addresses?address_id=1`
 
 ### Search
 
-**Endpoint:** /api/search
+**Endpoint:** /api/search  
 **Method:** GET  
 **Query:** phone  
 **Response:**
