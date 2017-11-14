@@ -20,7 +20,7 @@ const Authenticate = (user) => {
         bcrypt.compare(user.password, record.password)
           .then((result) => {
             if (result) {
-              return jwt.sign(_.omit(record.get({ 'plain': true }), ['password']), config.get('secret'), { expiresIn: '1d' }, (error, token) => {
+              return jwt.sign(_.omit(record, ['password']), config.get('secret'), { expiresIn: '1d' }, (error, token) => {
                 if (error) {
                   console.error('[JWT ERROR] ' + error)
                   return reject({ 'errors': {
