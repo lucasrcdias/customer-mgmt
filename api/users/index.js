@@ -5,7 +5,9 @@ const usersRoutes = (api) => {
   api.post('/users', (req, res) => {
     User.create(req.body.user)
       .then((user) => {
-        res.status(201).send(_.omit(user, ['password']))
+        user = _.omit(user.get({ 'plain': true }), ['password'])
+
+        res.status(201).send({ 'user': user })
       })
       .catch((user) => {
         res.status(400).send({ 'errors': user.errors })
