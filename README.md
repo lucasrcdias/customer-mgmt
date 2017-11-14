@@ -1,4 +1,4 @@
 # customer-mgmt
-Simple custome management API
+Simple customer management API
 
 **Study purposes only**
