@@ -1,9 +1,9 @@
-const Errors        = require('./errors')
-const Validations   = require('./validations')
-const Confirmations = require('./confirmations')
+const errors        = require('./errors')
+const validations   = require('./validations')
+const confirmations = require('./confirmations')
 
 module.exports = {
-  Errors,
-  Validations,
-  Confirmations
+  errors,
+  validations,
+  confirmations
 }
