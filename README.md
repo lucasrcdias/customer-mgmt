@@ -162,7 +162,7 @@ Example: `localhost:3000/api/customers?customer_id=1`
 
 **Endpoint:** /api/customers/:customer_id/phones  
 **Method:** PUT  
-**Query:** phone_id
+**Query:** phone_id  
 **Body:**
 ```
 {
@@ -178,7 +178,7 @@ Example: `localhost:3000/api/customers/1/phones?phone_id=1`
 
 **Endpoint:** /api/customers/:customer_id/phones  
 **Method:** DELETE  
-**Query:** phone_id
+**Query:** phone_id  
 
 Example: `localhost:3000/api/customers/1/phones?phone_id=1`
 
