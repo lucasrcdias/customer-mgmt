@@ -5,19 +5,13 @@ const Messages    = require('./../../messages')
 
 const isBypassed = (req) => {
   const bypassed = [
-    {
-      'path':   '/auth',
-      'method': 'POST'
-    },
-    {
-      'path':   '/users',
-      'method': 'POST'
-    }
+    { 'path': '/auth',  'method': 'POST' },
+    { 'path': '/users', 'method': 'POST' }
   ]
 
   return bypassed.filter((item) => {
     return req.path === item.path && req.method === item.method
-  }).lengthw
+  }).length
 }
 
 const authMiddleware = (req, res, next) => {
@@ -29,7 +23,9 @@ const authMiddleware = (req, res, next) => {
     if (error || !decoded) {
       console.error('[AUTHENTICATION] Invalid token')
 
-      return res.status(401).send({ 'errors': { 'token': Messages.errors.token } })
+      return res.status(401).send({ 'errors': {
+        'token': { 'invalid': Messages.errors.token.invalid }
+      }})
     }
 
     console.log('[AUTHENTICATION] Authentication success')
