@@ -1,2 +1,11 @@
 {
+  "not_empty": "não pode ficar em branco",
+  "format": "Formato inválido",
+  "phone": {
+    "length": "deve ter entre 8 e 9 números"
+  },
+  "user": {
+    "length": "deve ter entre 6 e 18 números",
+    "unique": "já está em uso"
+  }
 }

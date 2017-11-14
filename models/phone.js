@@ -1,15 +1,16 @@
 const Sequelize = require('sequelize')
 const sequelize = require('./../db')
+const Messages  = require('./../messages')
 
 const PhoneAttributes = {
   'number': {
     'type': Sequelize.TEXT,
     'allowNull': false,
     'validate': {
-      'notEmpty': 'não pode ficar em branco',
+      'notEmpty': { 'msg': Messages.validations.not_empty },
       'len': {
         'args': [8, 9],
-        'msg': 'deve ter entre 8 e 9 números'
+        'msg': Messages.validations.phone.length
       }
     }
   },
@@ -17,7 +18,7 @@ const PhoneAttributes = {
     'type': Sequelize.TEXT,
     'allowNull': false,
     'validate': {
-      'notEmpty': 'não pode ficar em branco'
+      'notEmpty': { 'msg': Messages.validations.not_empty }
     }
   },
   'description': {

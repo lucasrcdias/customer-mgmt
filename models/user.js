@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const bcrypt    = require('bcrypt')
 const sequelize = require('./../db')
+const Messages  = require('./../messages')
 
 const passwordHash = (user, options) => {
   return bcrypt.hash(user.password, 10)
@@ -11,27 +12,27 @@ const UserAttributes = {
   'email': {
     'type': Sequelize.TEXT,
     'allowNull': false,
-    'unique': { 'msg': 'já está em uso' },
+    'unique': { 'msg': Messages.validations.user.unique },
     'validate': {
-      'notEmpty': { 'msg': 'não pode ficar em branco' },
-      'isEmail': { 'msg': 'formato inválido' }
+      'notEmpty': { 'msg': Messages.validations.not_empty },
+      'isEmail': { 'msg': Messages.validations.format }
     }
   },
   'name': {
     'type': Sequelize.TEXT,
     'allowNull': false,
     'validate': {
-      'notEmpty': { 'msg': 'não pode ficar em branco' }
+      'notEmpty': { 'msg': Messages.validations.not_empty }
     }
   },
   'password': {
     'type': Sequelize.TEXT,
     'allowNull': false,
     'validate': {
-      'notEmpty': { 'msg': 'não pode ficar em branco' },
+      'notEmpty': { 'msg': Messages.validations.not_empty },
       'len': {
         'args': [6, 18],
-        'msg': 'deve ter entre 6 e 18 caracteres'
+        'msg': Messages.validations.user.length
       }
     }
   }

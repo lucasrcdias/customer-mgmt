@@ -1,12 +1,13 @@
 const Sequelize = require('sequelize')
 const sequelize = require('./../db')
+const Messages  = require('./../messages')
 
 const CustomerAttributes = {
   'name': {
     'type': Sequelize.TEXT,
     'allowNull': false,
     'validate': {
-      'notEmpty': { 'msg': 'não pode ficar em branco' }
+      'notEmpty': { 'msg': Messages.validations.not_empty }
     }
   }
 }
