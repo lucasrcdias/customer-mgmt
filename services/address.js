@@ -1,5 +1,6 @@
 const _       = require('lodash')
 const Address = require('./../models/address')
+const Messages = require('./../messages')
 
 const create = (address) => {
   return new Promise((resolve, reject) => {
@@ -18,7 +19,9 @@ const update = (address) => {
     Address.findOne({ 'where': { 'id': address.id, 'customer_id': address.customer_id } })
       .then((record) => {
         if (!record) {
-          return reject({ 'errors': 'Endereço não encontrado' })
+          return reject({ 'errors': {
+            'address': { 'not_found': Messages.errors.address.not_found }
+          }})
         }
 
         record.update(_.omit(address, ['id', 'customer_id']))
@@ -37,7 +40,9 @@ const destroy = (address) => {
     Address.findOne({ 'where': { 'id': address.id, 'customer_id': address.customer_id } })
       .then((record) => {
         if (!record) {
-          return reject({ 'errors': 'Endereço não encontrado' })
+          return reject({ 'errors': {
+            'address': { 'not_found': Messages.errors.address.not_found }
+          }})
         }
 
         record.destroy()

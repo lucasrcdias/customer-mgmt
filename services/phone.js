@@ -1,5 +1,6 @@
-const _     = require('lodash')
-const Phone = require('./../models/phone')
+const _        = require('lodash')
+const Phone    = require('./../models/phone')
+const Messages = require('./../messages')
 
 const create = (phone) => {
   return new Promise((resolve, reject) => {
@@ -18,7 +19,9 @@ const update = (phone) => {
     Phone.findOne({ 'where': { 'id': phone.id, 'customer_id': phone.customer_id } })
       .then((record) => {
         if (!record) {
-          return reject({ 'errors': 'Telefone não encontrado' })
+          return reject({ 'errors': {
+            'phone': { 'not_found': Messages.errors.phone.not_found }
+          }})
         }
 
         record.update(_.omit(phone, ['id', 'customer_id']))
@@ -37,7 +40,9 @@ const destroy = (phone) => {
     Phone.findOne({ 'where': { 'id': phone.id, 'customer_id': phone.customer_id } })
       .then((record) => {
         if (!record) {
-          return reject({ 'errors': 'Telefone não encontrado' })
+          return reject({ 'errors': {
+            'phone': { 'not_found': Messages.errors.phone.not_found }
+          }})
         }
 
         record.destroy()
