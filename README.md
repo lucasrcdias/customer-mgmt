@@ -221,7 +221,7 @@ Example: `localhost:3000/api/customers/1/phones?phone_id=1`
 
 **Endpoint:** /api/customers/:customer_id/addresses  
 **Method:** PUT  
-**Query:** address_id
+**Query:** address_id  
 **Body:**
 ```
 {
@@ -241,7 +241,7 @@ Example: `localhost:3000/api/customers/1/addresses?address_id=1`
 
 **Endpoint:** /api/customers/:customer_id/addresses  
 **Method:** DELETE  
-**Query:** address_id
+**Query:** address_id  
 
 Example: `localhost:3000/api/customers/1/addresses?address_id=1`
 
@@ -271,7 +271,7 @@ Example: `localhost:3000/api/customers/1/addresses?address_id=1`
 
 **Endpoint:** /api/search
 **Method:** GET  
-**Query:** phone
+**Query:** phone  
 **Response:**
 ```
 {
