@@ -1,6 +1,8 @@
 # Customer Management
 
-Description
+Simple customer management API built with NodeJS, ExpressJS, Sequelize and JWT authentication.
+
+Using this API you'll be able to create users that manage customers and each customer can have phones and addresses.
 
 ## Requirements
 
@@ -39,6 +41,14 @@ API base path is `localhost:3000/api/`
     "email": "john@example.com",
     "password": "supersecret"
   }
+}
+```
+
+#### Response
+
+```
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsdWNhcy5kaWFzQHJlZGVhbHVtbmkuY29tIiwibmFtZSI6Ikx1Y2FzIFJhbW9zIiwiY3JlYXRlZF9hdCI6IjIwMTctMTEtMTJUMDE6NTM6MDguNjg...Xt3Gg"
 }
 ```
 
@@ -94,6 +104,20 @@ API base path is `localhost:3000/api/`
 }
 ```
 
+#### Response
+
+```
+{
+  "user": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "updated_at": "2017-11-16T23:59:22.336Z",
+    "created_at": "2017-11-16T23:59:22.336Z"
+  }
+}
+```
+
 ---
 
 ### Customers
@@ -104,6 +128,17 @@ API base path is `localhost:3000/api/`
 ```
 {
   "customer": {
+    "name": "John Doe"
+  }
+}
+```
+
+#### Response
+
+```
+{
+  "customer": {
+    "id": 1,
     "name": "John Doe"
   }
 }
@@ -122,6 +157,17 @@ API base path is `localhost:3000/api/`
 ```
 
 Example: `localhost:3000/api/customers?customer_id=1`
+
+#### Response
+
+```
+{
+  "customer": {
+    "id": 1,
+    "name": "Doe John"
+  }
+}
+```
 
 **Endpoint:** /api/customers  
 **Method:** DELETE  
@@ -160,6 +206,19 @@ Example: `localhost:3000/api/customers?customer_id=1`
 }
 ```
 
+#### Response
+
+```
+{
+  "phone": {
+    "id": 1,
+    "area_code": 12,
+    "number": "999998888"
+    "description": "Mobile" (optional)
+  }
+}
+```
+
 **Endpoint:** /api/customers/:customer_id/phones  
 **Method:** PUT  
 **Query:** phone_id  
@@ -175,6 +234,19 @@ Example: `localhost:3000/api/customers?customer_id=1`
 ```
 
 Example: `localhost:3000/api/customers/1/phones?phone_id=1`
+
+#### Response
+
+```
+{
+  "phone": {
+    "id": 1,
+    "area_code": 12,
+    "number": "988889999"
+    "description": "Celular"
+  }
+}
+```
 
 **Endpoint:** /api/customers/:customer_id/phones  
 **Method:** DELETE  
@@ -219,6 +291,23 @@ Example: `localhost:3000/api/customers/1/phones?phone_id=1`
 }
 ```
 
+#### Response
+
+```
+{
+  "address": {
+    "id": 1,
+    "zipcode": "12220720",
+		"street": "Great street",
+		"neighborhood": "Nice neighborhood",
+		"number": "1",
+		"complement": "Ap 1",
+		"city": "São José dos Campos",
+		"description": "Home"
+  }
+}
+```
+
 **Endpoint:** /api/customers/:customer_id/addresses  
 **Method:** PUT  
 **Query:** address_id  
@@ -238,6 +327,23 @@ Example: `localhost:3000/api/customers/1/phones?phone_id=1`
 ```
 
 Example: `localhost:3000/api/customers/1/addresses?address_id=1`
+
+#### Response
+
+```
+{
+  "address": {
+    "id": 1,
+    "zipcode": "12220720",
+		"street": "Bad street",
+		"neighborhood": "Nice neighborhood",
+		"number": "1",
+		"complement": "Ap 1",
+		"city": "São José dos Campos",
+		"description": "Work"
+  }
+}
+```
 
 **Endpoint:** /api/customers/:customer_id/addresses  
 **Method:** DELETE  
