@@ -1,9 +1,9 @@
 const Customer           = require('./../../models/customer')
 const CustomerService    = require('./../../services/customer')
 const CustomerMiddleware = require('./../../middlewares/customer')
-const PhoneRoutes        = require('./../phones')
-const AddressRoutes      = require('./../addresses')
-const Messages           = require('./../../messages')
+const PhoneRoutes        = require('./phones')
+const AddressRoutes      = require('./addresses')
+const Messages           = require('./../../../config/messages')
 
 const customersRoutes = (api) => {
   api.get('/customers', (req, res) => {

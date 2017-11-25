@@ -1,6 +1,6 @@
 const Phone        = require('./../../models/phone')
 const PhoneService = require('./../../services/phone')
-const Messages     = require('./../../messages')
+const Messages     = require('./../../../config/messages')
 
 const PhoneRoutes = (api) => {
   api.get('/customers/:id/phones', (req, res) => {

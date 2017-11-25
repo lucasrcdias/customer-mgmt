@@ -3,7 +3,7 @@ const authRoutes     = require('./authentication')
 const usersRoutes    = require('./users')
 const customerRoutes = require('./customers')
 const searchRoutes   = require('./search')
-const authMiddleware = require('./../middlewares/authentication')
+const authMiddleware = require('./../../middlewares/authentication')
 
 const api = () => {
   let api = Router()

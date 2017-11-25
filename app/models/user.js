@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const bcrypt    = require('bcrypt')
-const sequelize = require('./../db')
-const Messages  = require('./../messages')
+const sequelize = require('./../../db')
+const Messages  = require('./../../config/messages')
 
 const passwordHash = (user, options) => {
   return bcrypt.hash(user.password, 10)

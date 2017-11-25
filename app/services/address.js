@@ -1,6 +1,6 @@
-const _       = require('lodash')
-const Address = require('./../models/address')
-const Messages = require('./../messages')
+const _        = require('lodash')
+const Address  = require('./../models/address')
+const Messages = require('./../../config/messages')
 
 const create = (address) => {
   return new Promise((resolve, reject) => {

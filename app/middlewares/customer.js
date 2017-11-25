@@ -1,4 +1,4 @@
-const Customer = require('./../../models/customer')
+const Customer = require('./../models/customer')
 
 const CustomerMiddleware = (req, res, next) => {
   const customerId = req.params.id

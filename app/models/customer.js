@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
-const sequelize = require('./../db')
-const Messages  = require('./../messages')
+const sequelize = require('./../../db')
+const Messages  = require('./../../config/messages')
 
 const CustomerAttributes = {
   'name': {

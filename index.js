@@ -1,7 +1,7 @@
 const express    = require('express')
-const middleware = require('./middlewares')
-const api        = require('./api')
-const models     = require('./models')
+const middleware = require('./app/middlewares')
+const api        = require('./app/controllers/api')
+const models     = require('./app/models')
 
 const app = express()
 

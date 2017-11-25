@@ -1,7 +1,7 @@
 const jwt         = require('jsonwebtoken')
 const config      = require('config')
-const CurrentUser = require('./../../services/current-user')
-const Messages    = require('./../../messages')
+const CurrentUser = require('./../services/current-user')
+const Messages    = require('./../../config/messages')
 
 const isBypassed = (req) => {
   const bypassed = [

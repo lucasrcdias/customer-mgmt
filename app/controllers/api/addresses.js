@@ -1,6 +1,6 @@
 const Address        = require('./../../models/address')
 const AddressService = require('./../../services/address')
-const Messages       = require('./../../messages')
+const Messages       = require('./../../../config/messages')
 
 const AddressRoutes = (api) => {
   api.get('/customers/:id/addresses', (req, res) => {
