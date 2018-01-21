@@ -1,6 +1,6 @@
 {
   "not_empty": "não pode ficar em branco",
-  "format": "Formato inválido",
+  "format": "formato inválido",
   "phone": {
     "length": "deve ter entre 8 e 9 números"
   },
