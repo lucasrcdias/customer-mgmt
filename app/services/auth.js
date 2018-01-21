@@ -10,9 +10,12 @@ const Authenticate = (user) => {
     User.findOne({ 'where': { 'email': user.email } })
       .then((record) => {
         if (!record) {
-          return reject({ 'errors': {
-            'user': { 'not_found': Messages.errors.user.not_found }
-          }})
+          return reject({ 'errors': [
+            {
+              'path': 'email',
+              'message': Messages.errors.user.not_found
+            }
+          ]})
         }
 
         record = record.get({ plain: true })
@@ -23,18 +26,24 @@ const Authenticate = (user) => {
               return jwt.sign(_.omit(record, ['password']), config.get('secret'), { expiresIn: '1d' }, (error, token) => {
                 if (error) {
                   console.error('[JWT ERROR] ' + error)
-                  return reject({ 'errors': {
-                    'token': { 'unavailable': Messages.errors.token.unavailable }
-                  }})
+                  return reject({ 'errors': [
+                    {
+                      'path': 'unavailable',
+                      'message': Messages.errors.token.unavailable
+                    }
+                  ]})
                 }
 
                 return resolve(Object.assign({}, _.omit(record, ['password']), { token }));
               })
             }
 
-            return reject({ 'errors': {
-              'user': { 'password': Messages.errors.user.password }
-            }})
+            return reject({ 'errors': [
+              {
+                path: 'password',
+                message: Messages.errors.user.password
+              }
+            ]});
           })
       })
   })
