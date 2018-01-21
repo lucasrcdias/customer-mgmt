@@ -28,7 +28,7 @@ const Authenticate = (user) => {
                   }})
                 }
 
-                return resolve({ 'token': token })
+                return resolve(Object.assign({}, _.omit(record, ['password']), { token }));
               })
             }
 
