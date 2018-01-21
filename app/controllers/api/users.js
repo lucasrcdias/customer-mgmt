@@ -1,5 +1,6 @@
 const _    = require('lodash')
 const User = require('./../../models/user')
+const Authenticate = require('./../../services/auth')
 
 const usersRoutes = (api) => {
   api.post('/users', (req, res) => {
@@ -7,7 +8,13 @@ const usersRoutes = (api) => {
       .then((user) => {
         user = _.omit(user.get({ 'plain': true }), ['password'])
 
-        res.status(201).send({ 'user': user })
+        Authenticate(req.body.user)
+          .then((user) => {
+            res.status(200).send(user)
+          })
+          .catch((error) => {
+            res.status(400).send(error)
+          })        
       })
       .catch((user) => {
         res.status(400).send({ 'errors': user.errors })
